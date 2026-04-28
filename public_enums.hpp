@@ -93,11 +93,9 @@ namespace Layout {
 enum single_target_tracker_command : uint8_t {
     CMD_OFF = 0,
     CMD_SET_TARGET_VECTOR = 1,
-    CMD_SET_TARGET_DETECTION = 2,
-    CMD_NUDGE = 3,
-    CMD_NONE = 4,
+    CMD_NONE = 2,
 };
 
-static_assert(CMD_NONE == 4, "single_target_tracker_command contract changed");
+static_assert(CMD_NONE == 2, "single_target_tracker_command contract changed");
 
 #endif
