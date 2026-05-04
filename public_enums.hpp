@@ -98,4 +98,14 @@ enum single_target_tracker_command : uint8_t {
 
 static_assert(CMD_NONE == 2, "single_target_tracker_command contract changed");
 
+enum class single_target_tracking_status : uint8_t {
+    OFF = 0,
+    INIT = 1,
+    RUNNING = 2,
+    DROPPED = 3,
+};
+
+static_assert(static_cast<uint8_t>(single_target_tracking_status::DROPPED) == 3,
+    "single_target_tracking_status contract changed");
+
 #endif
