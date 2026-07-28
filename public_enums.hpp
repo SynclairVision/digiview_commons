@@ -25,11 +25,19 @@ enum calibration_status : uint8_t {
     CALIBRATION_STATUS_6DOF_Z_POS = 5,
     CALIBRATION_STATUS_6DOF_Z_NEG = 6,
     CALIBRATION_STATUS_MAG_IN_PROGRESS = 7,
-    NUM_CALIBRATION_STATUSES = 8
+    CALIBRATION_STATUS_6DOF_READY = 8,
+    CALIBRATION_STATUS_6DOF_COMPLETE = 9,
+    CALIBRATION_STATUS_MAG_COMPLETE = 10,
+    CALIBRATION_STATUS_MAG_FAILED = 11,
+    NUM_CALIBRATION_STATUSES = 12
 };
 
 static_assert(CALIBRATION_STATUS_NOT_STARTED == 0, "calibration_status contract changed");
 static_assert(CALIBRATION_STATUS_MAG_IN_PROGRESS == 7, "calibration_status contract changed");
+static_assert(CALIBRATION_STATUS_6DOF_COMPLETE == 9, "calibration_status contract changed");
+static_assert(CALIBRATION_STATUS_MAG_COMPLETE == 10, "calibration_status contract changed");
+static_assert(CALIBRATION_STATUS_MAG_FAILED == 11, "calibration_status contract changed");
+static_assert(NUM_CALIBRATION_STATUSES == 12, "calibration_status contract changed");
 
 enum class app_status : uint8_t {
     STARTUP = 0,
