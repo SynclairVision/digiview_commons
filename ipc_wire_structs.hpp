@@ -6,14 +6,6 @@
 #include <cstddef>
 #include <cstdint>
 
-#ifdef IPC_GPU
-#include <cuda.h>
-#include <cuda_runtime_api.h>
-#else
-#include <nvbufsurface.h>
-#include <cuda_runtime.h>
-#endif
-
 namespace ipc {
 
 // GPU frame format occupies bits 24-27 of digiview_metadata::flags.
@@ -77,12 +69,8 @@ struct digiview_metadata {
     float    auto_pilot_euler[3];
     float    auto_pilot_acc[3];
 
-#ifdef IPC_GPU
     int32_t  frame_width;
     int32_t  frame_height;
-#else
-    NvBufSurfaceMapParams params;
-#endif
 
     int32_t  flags;
 };
