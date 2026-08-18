@@ -50,16 +50,6 @@ enum class app_status : uint8_t {
 static_assert(static_cast<uint8_t>(app_status::HALT) == 4, "app_status contract changed");
 
 namespace View {
-    enum CropMode : uint8_t {
-        NONE = 0,
-        CARTESIAN = 1,
-        PANORAMA = 2,
-        LUSTIGA_HUSET = 3,
-        FULL_FRAME = 4,
-    };
-
-    static_assert(FULL_FRAME == 4, "View::CropMode contract changed");
-
     enum TargetingMode : uint8_t {
         DIRECTIONAL = 0,
         COORDINAL = 1,
