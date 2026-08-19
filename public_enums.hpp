@@ -50,16 +50,6 @@ enum class app_status : uint8_t {
 static_assert(static_cast<uint8_t>(app_status::HALT) == 4, "app_status contract changed");
 
 namespace View {
-    enum CropMode : uint8_t {
-        NONE = 0,
-        CARTESIAN = 1,
-        PANORAMA = 2,
-        LUSTIGA_HUSET = 3,
-        FULL_FRAME = 4,
-    };
-
-    static_assert(FULL_FRAME == 4, "View::CropMode contract changed");
-
     enum TargetingMode : uint8_t {
         DIRECTIONAL = 0,
         COORDINAL = 1,
@@ -74,16 +64,16 @@ namespace View {
 namespace Layout {
     enum ID : uint8_t {
         LAYOUT_1 = 0,
-        LAYOUT_2_STK = 1,
-        LAYOUT_2_SBS = 2,
-        LAYOUT_2_SBS_1_STK = 3,
-        LAYOUT_4 = 4,
-        LAYOUT_3_SBS_1_STK = 5,
-        LAYOUT_DEBUG = 6,
-        LAYOUT_MAX = LAYOUT_DEBUG,
+        LAYOUT_2_COLUMNS = 1,
+        LAYOUT_2_ROWS = 2,
+        LAYOUT_TOP_2_BOTTOM_1 = 3,
+        LAYOUT_TOP_2_BOTTOM_2 = 4,
+        LAYOUT_TOP_3_BOTTOM_1 = 5,
+        LAYOUT_SOURCE_FRAME = 6,
+        LAYOUT_MAX = LAYOUT_SOURCE_FRAME,
     };
 
-    static_assert(LAYOUT_MAX == LAYOUT_DEBUG, "Layout::ID contract changed");
+    static_assert(LAYOUT_MAX == LAYOUT_SOURCE_FRAME, "Layout::ID contract changed");
 
     enum DetOverlayMode : uint8_t {
         DET_OVERLAY_NONE = 0,
