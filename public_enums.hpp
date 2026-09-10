@@ -10,11 +10,14 @@ enum calibration_command : uint8_t {
     CALIBRATION_CMD_START_ALL = 1,
     CALIBRATION_CMD_START_6DOF = 2,
     CALIBRATION_CMD_START_MAG = 3,
-    NUM_CALIBRATION_CMDS = 4
+    CALIBRATION_CMD_STOP = 4, ///< Request cancellation of the active calibration.
+    NUM_CALIBRATION_CMDS = 5
 };
 
 static_assert(CALIBRATION_CMD_NONE == 0, "calibration_command contract changed");
 static_assert(CALIBRATION_CMD_START_MAG == 3, "calibration_command contract changed");
+static_assert(CALIBRATION_CMD_STOP == 4, "calibration_command contract changed");
+static_assert(NUM_CALIBRATION_CMDS == 5, "calibration_command contract changed");
 
 enum calibration_status : uint8_t {
     CALIBRATION_STATUS_NOT_STARTED = 0,
@@ -28,8 +31,9 @@ enum calibration_status : uint8_t {
     CALIBRATION_STATUS_6DOF_READY = 8,
     CALIBRATION_STATUS_6DOF_COMPLETE = 9,
     CALIBRATION_STATUS_MAG_COMPLETE = 10,
-    CALIBRATION_STATUS_MAG_FAILED = 11,
-    NUM_CALIBRATION_STATUSES = 12
+    CALIBRATION_STATUS_MAG_FAILED = 11, ///< Terminal result for a genuine magnetometer calibration failure.
+    CALIBRATION_STATUS_FAILED = 12, ///< Terminal result for acknowledged cancellation or general non-magnetometer failure.
+    NUM_CALIBRATION_STATUSES = 13
 };
 
 static_assert(CALIBRATION_STATUS_NOT_STARTED == 0, "calibration_status contract changed");
@@ -37,7 +41,8 @@ static_assert(CALIBRATION_STATUS_MAG_IN_PROGRESS == 7, "calibration_status contr
 static_assert(CALIBRATION_STATUS_6DOF_COMPLETE == 9, "calibration_status contract changed");
 static_assert(CALIBRATION_STATUS_MAG_COMPLETE == 10, "calibration_status contract changed");
 static_assert(CALIBRATION_STATUS_MAG_FAILED == 11, "calibration_status contract changed");
-static_assert(NUM_CALIBRATION_STATUSES == 12, "calibration_status contract changed");
+static_assert(CALIBRATION_STATUS_FAILED == 12, "calibration_status contract changed");
+static_assert(NUM_CALIBRATION_STATUSES == 13, "calibration_status contract changed");
 
 enum class app_status : uint8_t {
     STARTUP = 0,
