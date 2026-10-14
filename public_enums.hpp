@@ -55,6 +55,25 @@ enum class app_status : uint8_t {
 static_assert(static_cast<uint8_t>(app_status::HALT) == 4, "app_status contract changed");
 
 namespace View {
+    /**
+     * @brief Per-view stabilization mode used by DigiView and its control clients.
+     * @note Values are carried by CAM_TARGETING's existing stabilization byte.
+     * Config files use the lowercase names; UNSET is only for partial updates.
+     */
+    enum class Stabilization : uint8_t {
+        FULL = 0,  ///< Stabilize yaw, pitch and roll in the world frame.
+        PILOT = 1, ///< Stabilize pitch and roll while following system heading.
+        ROLL = 2,  ///< Follow the camera direction while leveling roll.
+        NONE = 3,  ///< Keep the view fixed relative to the camera.
+        UNSET = 255 ///< Leave the current mode unchanged; never persist this value.
+    };
+
+    static_assert(static_cast<uint8_t>(Stabilization::FULL) == 0, "View::Stabilization contract changed");
+    static_assert(static_cast<uint8_t>(Stabilization::PILOT) == 1, "View::Stabilization contract changed");
+    static_assert(static_cast<uint8_t>(Stabilization::ROLL) == 2, "View::Stabilization contract changed");
+    static_assert(static_cast<uint8_t>(Stabilization::NONE) == 3, "View::Stabilization contract changed");
+    static_assert(static_cast<uint8_t>(Stabilization::UNSET) == 255, "View::Stabilization contract changed");
+
     enum TargetingMode : uint8_t {
         DIRECTIONAL = 0,
         COORDINAL = 1,
